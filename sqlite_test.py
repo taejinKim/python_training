@@ -1,10 +1,13 @@
 import sqlite3
 
-# db파일명을 미리 만들필요는 없다. 없으면 새로 생성되므로
+# 데이타베이스를 사용하기 위해, 일단 연결을 해야함
+# db파일명을 미리 만들필요는 없다. 없으면 새로 생성됨
 conn = sqlite3.connect("sqlite_test.db", isolation_level=None)
+
+# cursor는 SQL문을 저장하는 단위 라고 보면 됨
 cursor = conn.cursor()
 
-# 테이블이 없다면 테이블생성
+# 테이블이 없다면 테이블생성함, 데이타 구조를 정한다.
 cursor.execute(
     "create table if not exists addressbook(serial_no INTEGER, category TEXT, firstname TEXT, lastname TEXT, cellphone_number TEXT)")
 
